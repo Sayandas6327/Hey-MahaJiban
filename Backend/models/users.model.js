@@ -47,6 +47,11 @@ const userSchema = mongoose.Schema({
         //     `
         // }
       },
+      "profilePic":{
+          type:'String',
+        //   required:[true,'profilePic is required'],
+          default:"https://cdn-icons-png.flaticon.com/512/149/149071.png"
+      },
       "created":{
           type:Date,
           default: new Date()

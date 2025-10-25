@@ -1,9 +1,22 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
+   const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    // Get user info from localStorage
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+  };
   return (
     <nav className="navbar-container">
       {/* Left Section - Logo */}
@@ -15,18 +28,6 @@ const Navbar = () => {
             className="navbar-logo"
           />
         </Link>
-        {/* Toggler for mobile view */}
-        {/* <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button> */}
       </div>
 
       {/* Right Section - Links */}
@@ -34,12 +35,30 @@ const Navbar = () => {
         <Link className="nav-link text-nav" to="/">
           <b>Home</b>
         </Link>
-        <Link className="nav-link btn-nav" to="/signin">
+        {!user ?(<>
+                  <Link className="nav-link btn-nav" to="/signin">
           <b>Sign In</b>
         </Link>
         <Link className="nav-link btn-nav" to="/signup">
           <b>Sign Up</b>
         </Link>
+        </>):(
+          <>
+           <div className="navbar-right">
+            <Link className="nav-link btn-nav" to="/" onClick={handleLogout}>
+              <b>Log Out</b>
+            </Link>
+          </div>
+           <div className="user-profile">
+            <img
+              src={user.user.profilePic}
+              alt={user.user.name}
+              className="profile-pic"
+            />
+            {/* <span className="navbar-username">{user.user.name}</span> */}
+          </div>
+          </>
+        )}
       </div>
     </nav>
   );

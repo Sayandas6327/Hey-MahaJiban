@@ -55,8 +55,28 @@
 
 .text-nav:hover {
     transform: scale(0.9);
+    color: #851C1B;
 }
 
 .btn-nav:hover {
     transform: scale(1.1);
+}
+
+/* pfofilepic */
+.user-profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile-pic {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e8a71a;
+  transform: scale(1.5);
+}
+
+.profile-pic:hover {
+  transform: scale(1.9);
 }

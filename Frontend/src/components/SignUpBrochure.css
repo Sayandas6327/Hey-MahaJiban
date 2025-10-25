@@ -1,0 +1,224 @@
+.brochure-container {
+  display: flex;
+  min-height: 90vh;
+  padding: 2rem;
+  gap: 2rem;
+  max-width: 1000px; /* limits width */
+  width: 100%;
+  background: #fff8f0;
+    border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+}
+
+.brochure-left {
+  flex: 1;
+  padding: 2rem;
+}
+.brochure-right {
+  flex: 1;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 2rem;
+}
+.brochure-left h1 {
+  font-size: 2rem;
+  color: #851c1b;
+  margin-bottom: 1rem;
+}
+
+.highlight {
+  color: #e8a71a;
+}
+
+.brochure-left p {
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+.brochure-left ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.brochure-left ul li {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.brochure-right {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.brochure-right h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #851c1b;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 2rem;
+}
+
+.signup-form input {
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.signup-form button {
+  padding: 0.7rem;
+  background-color: #e8a71a;
+  color: #851c1b;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.signup-form button:hover {
+  background-color: #851c1b;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.signin-text {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.signin-text a {
+  color: #e8a71a;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signin-text a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Layout */
+@media (max-width: 900px) {
+  .brochure-container {
+    flex-direction: column;
+  }
+
+  .brochure-left, .brochure-right {
+    padding: 1rem;
+  }
+}
+
+/* Left section */
+.brochure-left {
+  flex: 1;
+}
+
+.brochure-left h1 {
+  font-size: 2rem;
+  color: #851c1b;
+  margin-bottom: 1rem;
+}
+
+.highlight {
+  color: #e8a71a;
+}
+
+.brochure-left p {
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+.brochure-left ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.brochure-left ul li {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+/* Right section */
+.brochure-right {
+  flex: 1;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 2rem;
+}
+
+.brochure-right h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #851c1b;
+}
+
+/* Form styling */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.signup-form input {
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.signup-form button {
+  padding: 0.7rem;
+  background-color: #e8a71a;
+  color: #851c1b;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.signup-form button:hover {
+  background-color: #851c1b;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.signin-text {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.signin-text a {
+  color: #e8a71a;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signin-text a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Layout */
+@media (max-width: 900px) {
+  .brochure-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+}
+.brochure-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* full viewport height */
+  background-color: #fff8f0;
+  padding: 1rem;
+}

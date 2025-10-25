@@ -7,6 +7,10 @@ const jwt = require('jsonwebtoken');
 const env = require('dotenv').config();
 //importing bcrypt
 const bcryptjs = require('bcryptjs');
+//loading base url
+const base_url = require("./base_url");
+
+//importing mongoose
 const { default: mongoose } = require("mongoose");
 const id = mongoose.Types.ObjectId;
 
@@ -23,7 +27,10 @@ const signup = async(req,res)=>{
         "name":req.body.name,
         "phone":req.body.phone,
         "email":req.body.email,
-        "pass1":hashed
+        "pass1":hashed,
+        "profilePic":req.file
+      ? `${base_url}/uploads/${req.file.filename}`
+      : "https://cdn-icons-png.flaticon.com/512/149/149071.png"
     });
     if(!userObj){
         res.status(200).json({"message":"Sign Up Error"});
