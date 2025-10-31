@@ -26,9 +26,9 @@ const BooksList : React.FC<BooksListProps> = ({ user }) => {
   useEffect(() => {
     const fetchBooks = async () => {
       if (!user || !user.token) {
-        // console.warn("User not logged in — skipping fetch");
-        // setLoading(false);
-        navigate("/signin");
+        console.warn("User not logged in — skipping fetch");
+        setLoading(false);
+        // navigate("/signin");
         return;
       }
       try {
