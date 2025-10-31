@@ -8,11 +8,15 @@ const Footer = () => {
     <div className='footer'>
       <div className='container'>
         <div className='row'>
-          <div className='col-md-4 col-sm-4'>
-            <h4>Sishuswapna Prakashan</h4>
+          <div className='col-md-3 col-sm-3'>
+            <h6>Sishuswapna Prakashan</h6>
             <p>1/1 Brindaban Mallick Lane, Kolkata 700009</p>
           </div>
-          <div className='col-md-4 col-sm-4'>
+          <div className='col-md-3 col-sm-3'>
+            <h6>Hemprabha Printing House</h6>
+            <p>1/1 Brindaban Mallick Lane, Kolkata 700009</p>
+          </div>
+          <div className='col-md-3 col-sm-3'>
             <div className='container-fluid d-flex justify-content-center'>
               <h4>Hey Mahajiban</h4>
             </div>
@@ -25,7 +29,7 @@ const Footer = () => {
               <a href="https://www.instagram.com/sayandas6327"><FaInstagram className='footer-icons'/></a>
             </div>
           </div>
-          <div className='col-md-4 col-sm-4'>
+          <div className='col-md-3 col-sm-3'>
           </div>
         </div>
       </div>

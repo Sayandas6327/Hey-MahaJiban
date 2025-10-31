@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./SignUpBrochure.css";
 import axios from "axios";
 
 const SignUpBrochure = () => {
+  const navigate = useNavigate();
   const [inputs,setInputs]=useState({name:"",phone:"",email:"",pass1:"",profilePic: null as File | null});
   const change = (e:any) => {
     const {name, value, files} =e.target;
@@ -31,7 +32,7 @@ const SignUpBrochure = () => {
       if(res.data.message==="Sign Up Successfull"){
         alert(res.data.message);
         setInputs({name:"",phone:"",email:"",pass1:"",profilePic: null});
-        window.location.href= "/signin"
+        navigate("/signin")
       }
       else{
         alert(res.data.message);

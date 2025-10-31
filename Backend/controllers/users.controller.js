@@ -23,6 +23,7 @@ const signup = async(req,res)=>{
     try{ 
         let pass1 = req.body.pass1;;
         let hashed = await hashedPass(pass1);
+        const verifactionCode = Math.floor(Math.random() * 1000000).toString();//new
    const userObj= await userModel.create({
         "name":req.body.name,
         "phone":req.body.phone,

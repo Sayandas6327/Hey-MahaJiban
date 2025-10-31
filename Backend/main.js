@@ -19,11 +19,12 @@ app.use(express.json());
 app.get("/",(req,res)=>{
     res.send("<h1>Welcome to Hey Mahajiban API</h1>");
 });
-//consuming the taskRouter here
+//consuming the userRouter here
 const userRouter = require('./routes/users.routes');
 app.use("/api/users",userRouter);
-//consuming the chatRouter here
-
+//consuming the bookRouter here
+const bookRouter = require('./routes/books.routes');
+app.use("/api/books",bookRouter);
 
 app.listen(PORT,HOST,()=>{
     console.log(`Express server has started at http://${HOST}:${PORT}/`);

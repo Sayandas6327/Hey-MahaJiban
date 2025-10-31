@@ -2,17 +2,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+interface NavbarProps {
+  user: any;
+  setUser: (user: any) => void;
+}
+const Navbar : React.FC<NavbarProps>= ({ user, setUser }) => {
 
-const Navbar = () => {
-   const [user, setUser] = useState<any>(null);
-
-  useEffect(() => {
-    // Get user info from localStorage
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
   const handleLogout = () => {
     localStorage.removeItem("user");
     setUser(null);

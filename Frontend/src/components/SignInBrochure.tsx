@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./SignInBrochure.css";
 import axios from "axios";
 
-
-const SignInBrochure = () => {
+interface SignInBrochureProps {
+  setUser: (user: any) => void;
+}
+const SignInBrochure : React.FC<SignInBrochureProps>= ({setUser}) => {
   const [email, setEmail] = useState("");
   const [pass1, setPass1] = useState("");
+  const navigate = useNavigate();
     // Example SignIn API call
 const handleSignIn = async (e:any) => {
     e.preventDefault();
@@ -21,8 +24,9 @@ const handleSignIn = async (e:any) => {
       alert(res.data.message);
       // Store user info
       localStorage.setItem("user", JSON.stringify(res.data));
+      setUser(res.data);
       // // Redirect or update state
-      window.location.href = "/";
+      navigate("/books");
     }
     else{
     alert(res.data.message);
