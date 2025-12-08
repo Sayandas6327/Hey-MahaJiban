@@ -6,7 +6,7 @@ import SignUpBrochure from './components/SignUpBrochure'
 import SignInBrochure from './components/SignInBrochure'
 import Footer from './components/Footer'
 import BooksList from './components/BooksList'
-
+import PdfReader from './components/PdfReader'
 
 const App : React.FC = () => {
   const [user, setUser] = useState<any>(null);
@@ -28,6 +28,7 @@ const App : React.FC = () => {
           <Route path="/signup" element={<SignUpBrochure />} />
           <Route path="/signin" element={<SignInBrochure setUser={setUser}/>} />
           <Route path="/books" element={<BooksList user={user}/>} />
+          <Route path="/book/:id" element={<PdfReader />} />
         </Routes>
         <Footer />
       </Router>

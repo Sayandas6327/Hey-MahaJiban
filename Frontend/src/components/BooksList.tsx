@@ -53,7 +53,10 @@ const BooksList : React.FC<BooksListProps> = ({ user }) => {
       [bookId]: !prev[bookId],
     }));
   };
-
+  // const handleBookRead = (bookId: string, bookPdf: string) => {
+  //   localStorage.setItem(`pdf-${bookId}`, bookPdf);
+  //   navigate(`/book/${bookId}`);
+  // }
   if (loading) return <p style={{textAlign:"center"}}>Loading books...</p>;
 
   
@@ -72,15 +75,19 @@ const BooksList : React.FC<BooksListProps> = ({ user }) => {
           books.map((book: Book) => (
             <div key={book._id} className="book-card row">
               <div className="card-left col-md-4 col-sm-4">
-                <img
+                <img 
                   src={
                       coverToggled[book._id]
                         ? book.backCover
                         : book.frontCover
                   }
                   alt={book.title}
-                  className="book-cover"
+                  className="book-cover text-align-center"
                 />
+                <div className="text-section">
+                <h3>{book.title}</h3>
+                <p>Author: {book.author}</p>
+                </div>
               </div>
               <div className="card-right col-md-8 col-sm-8">
                  <button
@@ -89,10 +96,19 @@ const BooksList : React.FC<BooksListProps> = ({ user }) => {
                   >
                     <MdFlipCameraAndroid />
                   </button>
-                <div className="text-section">
-                <h3>{book.title}</h3>
-                <p>Author: {book.author}</p>
-                </div>
+                  <a
+                    href={book.bookPdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="pdf-link"
+                  >
+                    <button>Read Now</button>
+                  </a>
+                  <button>Summary</button>
+
+                {/* <button className="read-btn" onClick={() => handleBookRead(book._id,book.bookPdf)}>
+                  Read Now
+                </button> */}
                
               </div>
             </div>
