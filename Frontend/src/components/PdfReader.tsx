@@ -1,13 +1,14 @@
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { Document, Page, pdfjs } from "react-pdf";
 import { useState } from "react";
+import workerSrc from "pdfjs-dist/build/pdf.worker?url";
 
-pdfjs.GlobalWorkerOptions.workerSrc =
-  `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
 
 const PdfReader = () => {
   const { id } = useParams();
-  const pdfUrl = localStorage.getItem(`pdf-${id}`);
+  const location = useLocation();
+  const { pdfUrl } = location.state || {};
   const [numPages, setNumPages] = useState<number | null>(null);
 
   if (!pdfUrl) return <h2>No PDF found!</h2>;
@@ -25,12 +26,13 @@ const PdfReader = () => {
       <h2>📖 Reading Book</h2>
 
       <Document
-        file={pdfUrl}
+        file={{ url: pdfUrl}}
         onLoadSuccess={({ numPages }) => setNumPages(numPages)}
-        options={{
-          cMapUrl: "cmaps/",
-          cMapPacked: true,
-        }}
+        onLoadError={(err) => console.log("PDF Load Error →", err)}
+        // options={{
+        //   cMapUrl: "cmaps/",
+        //   cMapPacked: true,
+        // }}
       >
         <Page
           pageNumber={1}

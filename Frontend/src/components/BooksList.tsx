@@ -46,6 +46,7 @@ const BooksList : React.FC<BooksListProps> = ({ user }) => {
     };
     fetchBooks();
   }, [user]);
+  console.log(books); 
 
   const handleToggleCover = (bookId: string) => {
     setCoverToggled((prev) => ({
@@ -53,10 +54,10 @@ const BooksList : React.FC<BooksListProps> = ({ user }) => {
       [bookId]: !prev[bookId],
     }));
   };
-  // const handleBookRead = (bookId: string, bookPdf: string) => {
-  //   localStorage.setItem(`pdf-${bookId}`, bookPdf);
-  //   navigate(`/book/${bookId}`);
-  // }
+
+  const handleReadNow = (bookId: string,bookPdf: string) => {
+    navigate(`/book/${bookId}`, { state: {pdfUrl: bookPdf} });
+  };
   if (loading) return <p style={{textAlign:"center"}}>Loading books...</p>;
 
   
@@ -96,19 +97,19 @@ const BooksList : React.FC<BooksListProps> = ({ user }) => {
                   >
                     <MdFlipCameraAndroid />
                   </button>
-                  <a
+                  {/* <a
                     href={book.bookPdf}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="pdf-link"
                   >
                     <button>Read Now</button>
-                  </a>
+                  </a> */}
                   <button>Summary</button>
 
-                {/* <button className="read-btn" onClick={() => handleBookRead(book._id,book.bookPdf)}>
+                <button className="read-btn" onClick={() => handleReadNow(book._id, book.bookPdf)}>
                   Read Now
-                </button> */}
+                </button>
                
               </div>
             </div>
