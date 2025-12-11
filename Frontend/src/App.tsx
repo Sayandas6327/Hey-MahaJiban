@@ -7,6 +7,7 @@ import SignInBrochure from './components/SignInBrochure'
 import Footer from './components/Footer'
 import BooksList from './components/BooksList'
 import PdfReader from './components/PdfReader'
+import SummaryPage from './components/SummaryPage'
 
 const App : React.FC = () => {
   const [user, setUser] = useState<any>(null);
@@ -29,6 +30,7 @@ const App : React.FC = () => {
           <Route path="/signin" element={<SignInBrochure setUser={setUser}/>} />
           <Route path="/books" element={<BooksList user={user}/>} />
           <Route path="/book/:id" element={<PdfReader />} />
+          <Route path="/summary/:id" element={<SummaryPage />} />
         </Routes>
         <Footer />
       </Router>

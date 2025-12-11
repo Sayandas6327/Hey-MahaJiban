@@ -10,6 +10,7 @@ import { MdFlipCameraAndroid } from "react-icons/md";
   frontCover: string;
   backCover: string;
   bookPdf: string;
+  summary: string;
 }
 interface BooksListProps {
   user: any;
@@ -46,7 +47,7 @@ const BooksList : React.FC<BooksListProps> = ({ user }) => {
     };
     fetchBooks();
   }, [user]);
-  console.log(books); 
+  // console.log(books); 
 
   const handleToggleCover = (bookId: string) => {
     setCoverToggled((prev) => ({
@@ -58,6 +59,12 @@ const BooksList : React.FC<BooksListProps> = ({ user }) => {
   const handleReadNow = (bookId: string,bookPdf: string) => {
     navigate(`/book/${bookId}`, { state: {pdfUrl: bookPdf} });
   };
+  const handleSummary = (bookId: string, bookSummary: string ) => {
+    navigate(`/summary/${bookId}`, {
+      state: { summary: bookSummary }
+    });
+  };
+
   if (loading) return <p style={{textAlign:"center"}}>Loading books...</p>;
 
   
@@ -105,12 +112,12 @@ const BooksList : React.FC<BooksListProps> = ({ user }) => {
                   >
                     <button>Read Now</button>
                   </a> */}
-                  <button>Summary</button>
-
-                <button className="read-btn" onClick={() => handleReadNow(book._id, book.bookPdf)}>
-                  Read Now
-                </button>
-               
+                  <button className="read-btn" onClick={() => handleReadNow(book._id, book.bookPdf)}>
+                    Read Now
+                  </button>
+                  <button onClick={() => handleSummary(book._id, book.summary)}>
+                    Summary
+                  </button>
               </div>
             </div>
           ))

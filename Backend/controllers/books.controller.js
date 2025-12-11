@@ -28,6 +28,7 @@ const postBook = async(req,res)=>{
             "bookPdf": req.files?.bookPdf?.[0]?.filename
                         ? `${base_url}/books/${req.files.bookPdf[0].filename}`
                         : null,
+            // "Summary":req.body.Summary,
         });
         if(!bookObj){
             res.status(200).json({"message":"Post Book Error"});

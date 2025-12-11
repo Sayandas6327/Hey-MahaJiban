@@ -1,0 +1,5 @@
+.pdf-page canvas {
+  width: 100% !important;
+  height: auto !important;
+  transform-origin: top center;
+}

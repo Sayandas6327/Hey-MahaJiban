@@ -18,7 +18,7 @@ const handleSignIn = async (e:any) => {
       email,
       pass1,
     });
-    console.log(res.data);
+    // console.log(res.data);
     if (res.data.message==="Sign In Successfull")
     {
       alert(res.data.message);

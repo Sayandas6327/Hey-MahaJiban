@@ -25,6 +25,10 @@ const bookSchema = mongoose.Schema({
         type: String,
         required:[true,"bookPdf is Required"],
     },
+    // "Summary":{
+    //     type: String,
+    //     required:[true,"Summary is Required"],
+    // },
     // "publishedDate":{
     //     type:'String',
     //     required:[true,"publishedDate is Required"],
