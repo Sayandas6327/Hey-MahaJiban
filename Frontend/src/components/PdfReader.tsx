@@ -8,6 +8,9 @@ pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
 const PdfReader = () => {
   const { id } = useParams();
   const location = useLocation();
+  // const storedPdf = localStorage.getItem("currentPdf");
+  // const pdfUrl = location.state?.pdfUrl || storedPdf;
+
   const { pdfUrl } = location.state || {};
   const [numPages, setNumPages] = useState<number>(0);
   const [pageNumber, setPageNumber] = useState<number>(1);
@@ -121,6 +124,36 @@ useEffect(() => {
         />
       </Document>
       
+      {/* PAGE CONTROLS */}
+      <div style={{ marginTop: "20px" }}>
+        <button
+          onClick={prevPage}
+          disabled={pageNumber <= 1}
+          style={{
+            padding: "8px 16px",
+            marginRight: "10px",
+            cursor: pageNumber <= 1 ? "not-allowed" : "pointer",
+          }}
+        >
+          ⬅ Previous
+        </button>
+
+        <span>
+          Page {pageNumber} of {numPages}
+        </span>
+
+        <button
+          onClick={nextPage}
+          disabled={pageNumber >= numPages}
+          style={{
+            padding: "8px 16px",
+            marginLeft: "10px",
+            cursor: pageNumber >= numPages ? "not-allowed" : "pointer",
+          }}
+        >
+          Next ➡
+        </button>
+      </div>
 
       {/* ❌ No download button */}
     </div>
