@@ -26,7 +26,7 @@ const SignUpBrochure = () => {
       if (inputs.profilePic) {
         formData.append("profilePic", inputs.profilePic);
       }
-    const res = await axios.post("http://localhost:3000/api/users/signup", formData,{
+    const res = await axios.post("https://hey-mahajiban-backend.onrender.com/api/users/signup", formData,{
       headers: { "Content-Type": "multipart/form-data" },
     });
       if(res.data.message==="Sign Up Successfull"){
