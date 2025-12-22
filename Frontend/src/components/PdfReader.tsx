@@ -1,4 +1,4 @@
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Document, Page, pdfjs } from "react-pdf";
 import { useState,useRef, useEffect } from "react";
 import workerSrc from "pdfjs-dist/build/pdf.worker?url";
