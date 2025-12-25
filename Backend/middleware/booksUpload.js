@@ -35,7 +35,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: "uploads",
+    folder: "books",
     resource_type: "auto",
   },
   filename: function (req, file, cb) {

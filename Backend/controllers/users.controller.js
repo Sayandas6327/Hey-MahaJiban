@@ -31,7 +31,11 @@ const signup = async(req,res)=>{
         "pass1":hashed,
         "profilePic":req.file
       ? `${base_url}/${req.file.filename}`
-      : "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+      : "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+    //     "profilePic":req.file
+    //   ? `${base_url}/uploads/${req.file.filename}`
+    //   : "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+    
     });
     if(!userObj){
         res.status(200).json({"message":"Sign Up Error"});

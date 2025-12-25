@@ -19,16 +19,23 @@ const postBook = async(req,res)=>{
             "author":req.body.author,
             "description":req.body.description,
             "price":req.body.price,
+            // "frontCover": req.files?.frontCover?.[0]?.filename
+            //             ? `${base_url}/books/${req.files.frontCover[0].filename}`
+            //             : null,
             "frontCover": req.files?.frontCover?.[0]?.filename
-                        ? `${base_url}/books/${req.files.frontCover[0].filename}`
+                        ? `${base_url}${req.files.frontCover[0].filename}`
                         : null,
+            // "backCover": req.files?.backCover?.[0]?.filename
+            //             ? `${base_url}/books/${req.files.backCover[0].filename}`
+            //             : null,
             "backCover": req.files?.backCover?.[0]?.filename
-                        ? `${base_url}/books/${req.files.backCover[0].filename}`
+                        ? `${base_url}${req.files.backCover[0].filename}`
                         : null,
+            // 
             "bookPdf": req.files?.bookPdf?.[0]?.filename
-                        ? `${base_url}/books/${req.files.bookPdf[0].filename}`
+                        ? `${base_url}${req.files.bookPdf[0].filename}`
                         : null,
-            // "Summary":req.body.Summary,
+            "Summary":req.body.Summary,
         });
         if(!bookObj){
             res.status(200).json({"message":"Post Book Error"});
