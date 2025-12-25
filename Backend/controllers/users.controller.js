@@ -30,7 +30,7 @@ const signup = async(req,res)=>{
         "email":req.body.email,
         "pass1":hashed,
         "profilePic":req.file
-      ? `${base_url}/uploads/${req.file.filename}`
+      ? `${base_url}/${req.file.filename}`
       : "https://cdn-icons-png.flaticon.com/512/149/149071.png"
     });
     if(!userObj){
