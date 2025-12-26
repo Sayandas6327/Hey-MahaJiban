@@ -32,17 +32,33 @@ cloudinary.config({
 // });
 
 // Multer cloudinay storage config
+// const storage = new CloudinaryStorage({
+//   cloudinary,
+//   params: (req, file) => ({
+//     folder: "books",
+//     resource_type: "auto",
+//     public_id: `${Date.now()}-${file.originalname.replace(/\s+/g, "_")}`,
+//   }),
+// });
 const storage = new CloudinaryStorage({
   cloudinary,
-  params: {
-    folder: "books",
-    resource_type: "auto",
-  },
-  filename: function (req, file, cb) {
-    const uniqueName = Date.now() + "-" + file.originalname;
-    cb(null, uniqueName);
+  params: (req, file) => {
+    if (file.mimetype === "application/pdf") {
+      return {
+        folder: "books",
+        resource_type: "raw",
+        public_id: `${Date.now()}-${file.originalname}`,
+      };
+    }
+
+    return {
+      folder: "books",
+      resource_type: "image",
+      public_id: `${Date.now()}-${file.originalname}`,
+    };
   },
 });
+
 
 // Optional file upload: allows requests without a file
 const upload = multer({ storage });

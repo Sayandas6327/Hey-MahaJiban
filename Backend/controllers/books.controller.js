@@ -18,7 +18,7 @@ const postBook = async(req,res)=>{
             "title":req.body.title,
             "author":req.body.author,
             "description":req.body.description,
-            "price":req.body.price,
+            // "price":req.body.price,
             // "frontCover": req.files?.frontCover?.[0]?.filename
             //             ? `${base_url}/books/${req.files.frontCover[0].filename}`
             //             : null,
