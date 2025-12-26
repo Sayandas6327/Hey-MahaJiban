@@ -34,11 +34,11 @@ cloudinary.config({
 // Multer cloudinay storage config
 const storage = new CloudinaryStorage({
   cloudinary,
-  params: (req, file) => ({
+  params: {
     folder: "books",
-    resource_type: "raw",
-    public_id: `${Date.now()}-${file.originalname.replace(/\s+/g, "_")}`,
-  }),
+    resource_type: "auto",
+  },
+
 });
 
 // Optional file upload: allows requests without a file
