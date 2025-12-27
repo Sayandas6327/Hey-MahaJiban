@@ -36,7 +36,7 @@ const storage = new CloudinaryStorage({
   cloudinary,
   params: {
     folder: "books",
-    resource_type: "raw",
+    resource_type: "auto",
   },
 
 });
