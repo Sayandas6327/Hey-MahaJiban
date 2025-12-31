@@ -6,13 +6,13 @@
   min-height: 100vh;
 }
 
-.book-list-container h2 {
+/* .book-list-container h2 {
   text-align: center;
   color: #851c1b;
   font-size: 2rem;
   margin-bottom: 2rem;
   font-weight: 700;
-}
+} */
 
 /* Book list layout */
 .book-grid {

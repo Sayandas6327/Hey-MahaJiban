@@ -7,6 +7,7 @@ import { MdFlipCameraAndroid } from "react-icons/md";
   _id: string;
   title: string;
   author: string;
+  description: string;
   frontCover: string;
   backCover: string;
   bookPdf: string;
@@ -18,6 +19,7 @@ interface BooksListProps {
 
 const BooksList : React.FC<BooksListProps> = ({ user }) => {
   const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("");
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
   const [coverToggled, setCoverToggled] = useState<{ [key: string]: boolean }>(
@@ -56,9 +58,20 @@ const BooksList : React.FC<BooksListProps> = ({ user }) => {
     }));
   };
 
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const filteredBooks = books.filter((book) =>
+  `${book.title} ${book.author} ${book.description}`
+    .toLowerCase()
+    .includes(searchTerm.toLowerCase())
+);
+
   const handleReadNow = (bookId: string,bookPdf: string) => {
     navigate(`/book/${bookId}`, { state: {pdfUrl: bookPdf} });
   };
+
   const handleSummary = (bookId: string, bookSummary: string ) => {
     navigate(`/summary/${bookId}`, {
       state: { summary: bookSummary }
@@ -71,16 +84,18 @@ const BooksList : React.FC<BooksListProps> = ({ user }) => {
 
   return (
     <>
-    <div className="search-container" style={{ position: "fixed" }}>
+    <div className="search-container" style={{ position: "fixed", }}>
       {/* <br/> */}
-      <input type="search" placeholder="Search" />
+      <input type="search" placeholder="Search" 
+      value={searchTerm} onChange={handleSearch}/>
       {/* <br/> */}
     </div>
+    <br/><br/><br/>
     <div className="book-list-container">
-      <h2>📚 Available Books</h2>
+      {/* <h2>📚 Available Books</h2> */}
       <div className="book-grid">
-        {books.length > 0 ? (
-          books.map((book: Book) => (
+        {filteredBooks.length > 0 ? (
+          filteredBooks.map((book: Book) => (
             <div key={book._id} className="book-card row">
               <div className="card-left col-md-4 col-sm-4">
                 <img 
