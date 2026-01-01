@@ -53,9 +53,28 @@ const signup = async(req,res)=>{
     }
 }
 
+const VerifyEmail = async(req,res)=>{
+    try{
+        let code = req.body.code;
+        const userObj = await userModel.findOne({"verifactionCode":code}).exec();
+        if(userObj){
+            userObj.isVerified = true;
+            userObj.verifactionCode = undefined;
+            await userObj.save();
+            res.status(200).json({"message":"Email Verified Successfully"});
+        }else{
+            res.status(200).json({"message":"Invalid Verification Code"});
+        }
+    }catch(error){
+        res.status(403).json(error);
+        console.error("Verification error:", error);
+    
+    }
+}
+
 
 const signin = async(req,res)=>{
-      const user =  await userModel.findOne({"email":req.body.email}).exec();
+      const user =  await userModel.findOne({"email":req.body.email, "isVerified":true}).exec();
       if (user){
           {
             const db_hashed_pass = user.pass1;
@@ -77,7 +96,7 @@ const signin = async(req,res)=>{
 
 
 module.exports ={
-    signup,signin
+    signup, signin, VerifyEmail
 };
 
 console.log("user controller is working");
