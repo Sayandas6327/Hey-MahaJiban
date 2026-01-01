@@ -12,6 +12,7 @@ const base_url = require("./base_url");
 
 //importing mongoose
 const { default: mongoose } = require("mongoose");
+const { default: sendEmail } = require("../middleware/emailotpsender"); //new
 const id = mongoose.Types.ObjectId;
 
 //pasword hashing
@@ -23,7 +24,7 @@ const signup = async(req,res)=>{
     try{ 
         let pass1 = req.body.pass1;;
         let hashed = await hashedPass(pass1);
-        const verifactionCode = Math.floor(Math.random() * 1000000).toString();//new
+        let verifactionCode = Math.floor(Math.random() * 1000000).toString(); // Generate a random 6-digit number
    const userObj= await userModel.create({
         "name":req.body.name,
         "phone":req.body.phone,
@@ -32,11 +33,14 @@ const signup = async(req,res)=>{
         "profilePic":req.file
       ? `${base_url}/${req.file.filename}`
       : "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+        "verifactionCode":verifactionCode
     //     "profilePic":req.file
     //   ? `${base_url}/uploads/${req.file.filename}`
     //   : "https://cdn-icons-png.flaticon.com/512/149/149071.png"
     
     });
+    await sendEmail(userObj.email, verifactionCode);
+
     if(!userObj){
         res.status(200).json({"message":"Sign Up Error"});
     }else{
@@ -45,6 +49,7 @@ const signup = async(req,res)=>{
 
     }catch(error){
         res.status(403).json(error);
+        console.error("Signup error:", error);
     }
 }
 
