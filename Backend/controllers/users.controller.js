@@ -74,7 +74,7 @@ const VerifyEmail = async(req,res)=>{
 
 
 const signin = async(req,res)=>{
-      const user =  await userModel.findOne({$and:[{"email":req.body.email}, {"isVerified":true}]}).exec();
+      const user =  await userModel.findOne({"email":req.body.email, "isVerified":true}).exec();
       if (user){
           {
             const db_hashed_pass = user.pass1;
