@@ -76,6 +76,9 @@ const VerifyEmail = async(req,res)=>{
 const signin = async(req,res)=>{
       const user =  await userModel.findOne({"email":req.body.email, "isVerified":true}).lean();
       if (user){
+          if(!user.isVerified){
+            res.status(200).json({"message":"Please Verify Your Email"}); 
+          }
           {
             const db_hashed_pass = user.pass1;
             const isValid =  await bcryptjs.compareSync(req.body.pass1,db_hashed_pass) ? true : false;
