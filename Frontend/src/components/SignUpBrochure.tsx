@@ -26,9 +26,11 @@ const SignUpBrochure = () => {
       if (inputs.profilePic) {
         formData.append("profilePic", inputs.profilePic);
       }
-    const res = await axios.post("https://hey-mahajiban-backend.onrender.com/api/users/signup", formData,{
+    const res = await axios.post("https://hey-mahajiban-backend.onrender.com/api/users/signup", formData,
+      {
       headers: { "Content-Type": "multipart/form-data" },
-    });
+      }
+    );
       if(res.data.message==="Sign Up Successfull"){
         alert(res.data.message);
         setInputs({name:"",phone:"",email:"",pass1:"",profilePic: null});
