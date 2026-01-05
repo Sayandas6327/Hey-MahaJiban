@@ -1,7 +1,6 @@
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 dotenv.config();
-// try{
 
   const transporter = nodemailer.createTransport({
     host: "smtp-relay.bravo.com",
@@ -13,29 +12,6 @@ dotenv.config();
         pass: process.env.GMAIL_APP_PASS,
     },
   });
-//   const sendEmail = {
-//     from : process.env.GMAIL_USER,
-//     to : email,
-//     subject : "Verification Code",
-//     text : `Your OTP is ${verificationCode}`
-//   };
-//   await new Promise((resolve,reject) =>{
-//     transporter.sendMail(sendEmail, (err, info) => {
-//       if (err) {
-//         console.log(err);
-//         reject(err);
-//       } else {
-//         console.log("Email sent successfully");
-//         resolve(info);
-//       }
-//     });
-//   });
-//   res.status(200).json({"message":"Email sent "});
-// }
-// catch(err){
-//     console.log(err);
-//     res.status(500).json({"message":err.message});
-// }
 
 const sendEmail = async (email, verificationCode) => {
   try {
@@ -55,12 +31,12 @@ const sendEmail = async (email, verificationCode) => {
           }
         });
       })
-//     await transporter.sendMail({
-//       from: process.env.GMAIL_USER,
-//       to: email,
-//       subject: "Verification Code",
-//       text: `Your OTP is ${verificationCode}`,
-//     });
+    await transporter.sendMail({
+      from: process.env.GMAIL_USER,
+      to: email,
+      subject: "Verification Code",
+      text: `Your OTP is ${verificationCode}`,
+    });
 
     console.log("Email sent successfully");
   } catch (error) {
