@@ -12,7 +12,8 @@ const base_url = require("./base_url");
 
 //importing mongoose
 const { default: mongoose } = require("mongoose");
-const { default: sendEmail } = require("../middleware/emailOTPsender"); //new
+// const { default: sendEmail } = require("../middleware/emailOTPsender"); //new
+const { default: sendEmail } = require("../middleware/emailresend"); //resend
 const id = mongoose.Types.ObjectId;
 
 //pasword hashing
