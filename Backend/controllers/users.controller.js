@@ -74,7 +74,8 @@ const VerifyEmail = async(req,res)=>{
 
 
 const signin = async(req,res)=>{
-      const user =  await userModel.findOne({"email":req.body.email, "isVerified":true}).lean();
+    //   const user =  await userModel.findOne({"email":req.body.email, "isVerified":true}).lean();
+    const user =  await userModel.findOne({"email":req.body.email}).exec(); //not checking the verification
       if (user){
           if(!user.isVerified){
             res.status(200).json({"message":"Please Verify Your Email"}); 
