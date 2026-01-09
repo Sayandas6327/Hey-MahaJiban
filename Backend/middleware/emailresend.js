@@ -21,7 +21,7 @@ const sendEmail = async (email, verificationCode) => {
         console.error("Error sending email:", error.message);
     }
 }
-
+ 
 export default sendEmail;
 
 
