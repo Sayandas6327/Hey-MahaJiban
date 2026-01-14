@@ -1,9 +1,11 @@
 import { useLocation } from "react-router-dom";
 import { Document, Page, pdfjs } from "react-pdf";
 import { useState,useRef, useEffect } from "react";
-import workerSrc from "pdfjs-dist/build/pdf.worker?url";
 import "./PdfReader.css";
-pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
+pdfjs.GlobalWorkerOptions.workerSrc =  new URL(
+  "pdfjs-dist/build/pdf.worker.min.mjs",
+  import.meta.url
+).toString();
 
 const PdfReader = () => {
   // const { id } = useParams();
