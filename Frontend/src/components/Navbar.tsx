@@ -1,20 +1,22 @@
 
 import React,{ useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import DropDownProfile from "./DropDownProfile";
+import "./DropDownProfile.css"
 interface NavbarProps {
   user: any;
   setUser: (user: any) => void;
 }
 const Navbar : React.FC<NavbarProps>= ({ user, setUser }) => {
-
+  const Navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const handleLogout = () => {
     localStorage.removeItem("user");
     setUser(null);
     setOpen(false);
+    Navigate("/");
   };
   const toggleDropdown = (e: React.MouseEvent) => {
     // e.stopPropagation();
@@ -82,7 +84,33 @@ const Navbar : React.FC<NavbarProps>= ({ user, setUser }) => {
               onClick={toggleDropdown}
             />
             {/* Dropdown Menu */}
-              {open && <DropDownProfile />}
+              {/* {open && <DropDownProfile />} */}
+              {open && (
+              <div className="dropDownProfile"
+                // onClick={(e) => e.stopPropagation()}
+              > 
+                <img src={user.user.profilePic} alt={user.user.name} className="profile-pic-dropdown"></img>
+                <div className="dropdown-header">
+                  <b>{user.user.name}</b>
+                </div>
+
+                <Link to="/profile" className="dropdown-item" onClick={() => setOpen(false)}>
+                  My Profile
+                </Link>
+
+                <Link
+                  to="/change-password"
+                  className="dropdown-item"
+                  onClick={() => setOpen(false)}
+                >
+                  Change Password
+                </Link>
+
+                <button className="dropdown-item" onClick={handleLogout}>
+                  Logout
+                </button>
+              </div>
+            )}
             {/* <span className="navbar-username">{user.user.name}</span> */}
           </div>
           </>
