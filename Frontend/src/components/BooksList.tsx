@@ -130,7 +130,7 @@ const BooksList : React.FC<BooksListProps> = ({ user }) => {
                   <button className="read-btn" onClick={() => handleReadNow(book._id, book.bookPdf)}>
                     Read Now
                   </button>
-                  <button onClick={() => handleSummary(book._id, book.summary)}>
+                  <button className="summary-btn" onClick={() => handleSummary(book._id, book.summary)}>
                     Summary
                   </button>
               </div>

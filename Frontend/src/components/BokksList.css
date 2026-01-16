@@ -167,3 +167,35 @@
   display: flex;
   flex-direction: column;
 }
+.read-btn {
+  background-color: #851c1b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.read-btn:hover {
+  background-color: #e8a71a;
+  transform: scale(1.05);
+}
+.summary-btn{
+  /* background-color: #e8a71a; */
+  background: linear-gradient(#e8a71a, #851c1b);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.summary-btn:hover {
+  /* background-color: #851c1b; */
+  background: linear-gradient(#851c1b, #e8a71a);
+  transform: scale(1.05);
+}

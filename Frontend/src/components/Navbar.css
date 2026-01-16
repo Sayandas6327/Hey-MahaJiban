@@ -82,9 +82,9 @@
   transform: scale(1.5);
 } */
 
-/* .profile-pic:hover {
+.profile-pic:hover {
   transform: scale(1.9); 
-} */
+}
 /* nav list */
 .profile-dropdown {
   position: relative;
@@ -93,6 +93,7 @@
   cursor: pointer;
   align-items: center;
   z-index: 2000;
+  overflow: visible;
 }
 
 .profile-pic {
@@ -106,11 +107,11 @@
 
 /* Dropdown box */
 .dropdown-menu {
-  position: fixed;
+  /* position: fixed;
   top: 70px;
-  right: 20px;
-  /* position: absolute;
-  right: 0; */
+  right: 20px; */
+  position: absolute;
+  right: 0;
   top: calc(100% + 10px);
   width: 180px;
   /* min-width: 180px; */
@@ -121,6 +122,7 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   z-index: 10000;
   overflow: visible;
+  display: block;
   outline: 2px solid red; /*temporary*/
 }
 

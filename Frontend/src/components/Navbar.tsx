@@ -2,12 +2,13 @@
 import React,{ useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import DropDownProfile from "./DropDownProfile";
 interface NavbarProps {
   user: any;
   setUser: (user: any) => void;
 }
 const Navbar : React.FC<NavbarProps>= ({ user, setUser }) => {
-  const [position, setPosition] = useState({ top: 0, left: 0 });
+
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const handleLogout = () => {
@@ -16,7 +17,7 @@ const Navbar : React.FC<NavbarProps>= ({ user, setUser }) => {
     setOpen(false);
   };
   const toggleDropdown = (e: React.MouseEvent) => {
-    e.stopPropagation();
+    // e.stopPropagation();
     setOpen((prev) => !prev);
   }
 
@@ -34,8 +35,10 @@ const Navbar : React.FC<NavbarProps>= ({ user, setUser }) => {
       }
     };
 
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
+    // document.addEventListener("click", handleClickOutside);
+    // return () => document.removeEventListener("click", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
@@ -75,37 +78,11 @@ const Navbar : React.FC<NavbarProps>= ({ user, setUser }) => {
               src={user.user.profilePic}
               alt={user.user.name}
               className="profile-pic"
+              onMouseDown={(e) => e.stopPropagation()}
               onClick={toggleDropdown}
             />
-            {/* debug line */}
-            <div style={{ color: "red", fontSize: "12px" }}>
-              {open ? "OPEN" : "CLOSED"}
-            </div>
             {/* Dropdown Menu */}
-            {open && (
-              <div className="dropdown-menu"
-              onMouseDown={(e) => e.stopPropagation()}>
-                <div className="dropdown-header">
-                  <b>{user.user.name}</b>
-                </div>
-
-                <Link to="/profile" className="dropdown-item" onClick={() => setOpen(false)}>
-                  My Profile
-                </Link>
-
-                <Link
-                  to="/change-password"
-                  className="dropdown-item"
-                  onClick={() => setOpen(false)}
-                >
-                  Change Password
-                </Link>
-
-                <button className="dropdown-item logout" onClick={handleLogout}>
-                  Logout
-                </button>
-              </div>
-            )}
+              {open && <DropDownProfile />}
             {/* <span className="navbar-username">{user.user.name}</span> */}
           </div>
           </>

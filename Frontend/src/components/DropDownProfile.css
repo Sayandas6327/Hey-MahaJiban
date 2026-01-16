@@ -1,0 +1,28 @@
+.dropDownProfile{
+    position: absolute;
+    top: 3.5rem;
+    right: -0.5rem;
+    width: 120px;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f2d77d;
+    /* z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; */
+    
+}
+.dropDownProfile::before{
+    content: "";
+    position : absolute;
+    top: -0.8rem;
+    right: 1rem;
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    transform: rotate(45deg);
+    border-left : 1px solid #f2d77d;
+    border-top : 1px solid #f2d77d;
+}
