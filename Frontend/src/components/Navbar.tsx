@@ -2,8 +2,10 @@
 import React,{ useEffect, useState, useRef } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import "./Navbar.css";
-import DropDownProfile from "./DropDownProfile";
+// import DropDownProfile from "./DropDownProfile";
 import "./DropDownProfile.css"
+import { TbLogout } from "react-icons/tb";
+import { LiaBookSolid } from "react-icons/lia";
 interface NavbarProps {
   user: any;
   setUser: (user: any) => void;
@@ -106,8 +108,15 @@ const Navbar : React.FC<NavbarProps>= ({ user, setUser }) => {
                   Change Password
                 </Link>
 
+                <Link
+                  to="/books"
+                  className="dropdown-item"
+                  onClick={() => setOpen(false)}
+                >
+                  <LiaBookSolid /> Books
+                </Link>
                 <button className="dropdown-item" onClick={handleLogout}>
-                  Logout
+                  <TbLogout /> Logout
                 </button>
               </div>
             )}
