@@ -55,6 +55,7 @@
   border-radius: 8px;
   border: 1px solid #ddd;
   transition: transform 0.3s ease;
+  
 }
 
 .book-card:hover .book-cover {
@@ -81,7 +82,7 @@
 .card-right p {
   color: #555;
   font-size: 1rem;
-  margin: 0;
+  margin: 0; 
 }
 
 /* Search bar */
@@ -139,6 +140,7 @@
 
 /* Button styling */
 .toggle-btn {
+  width: 110px;
   background-color: #e8a71a;
   color: #fff;
   border: none;
@@ -161,11 +163,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
 }
 
 .text-section {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 120px;
 }
 .read-btn {
   background-color: #851c1b;
@@ -198,4 +204,7 @@
   /* background-color: #851c1b; */
   background: linear-gradient(#851c1b, #e8a71a);
   transform: scale(1.05);
+}
+.false-div-space{
+  height: 5px;
 }

@@ -96,8 +96,9 @@ const BooksList : React.FC<BooksListProps> = ({ user }) => {
       <div className="book-grid">
         {filteredBooks.length > 0 ? (
           filteredBooks.map((book: Book) => (
-            <div key={book._id} className="book-card col-md-6">
-              <div className="">
+            <div key={book._id} className="book-card row">
+              <div className="card-left col-md-4 col-sm-4">
+                <div className="col-md-6 col-sm-6 col-xs-6 col-lg-6">
                 <img 
                   src={
                       coverToggled[book._id]
@@ -106,14 +107,17 @@ const BooksList : React.FC<BooksListProps> = ({ user }) => {
                   }
                   alt={book.title}
                   className="book-cover text-align-center"
-                />
-                 <span>{book.title}</span>
-                <span>Author: {book.author}</span>
-                <div className="text-section">
-               
-
-<br/>
-                         <div className="">
+                /></div>
+                <div className="text-section col-md-6 col-sm-6 col-xs-6 col-lg-6">
+                <h3>{book.title}</h3>
+                <p>Author: {book.author}</p>
+                </div>
+              </div>
+              <div className="false-div-space">
+                <br/>
+              </div>
+              <div className="card-right col-md-8 col-sm-8">
+                {/* <br/><br/> */}
                  <button
                     className="toggle-btn"
                     onClick={() => handleToggleCover(book._id)}
@@ -135,10 +139,6 @@ const BooksList : React.FC<BooksListProps> = ({ user }) => {
                     Summary
                   </button>
               </div>
-                </div>
-              </div>
-              <br/>
-      
             </div>
           ))
         ) : (
@@ -151,3 +151,4 @@ const BooksList : React.FC<BooksListProps> = ({ user }) => {
 };
 
 export default BooksList;
+
