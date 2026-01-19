@@ -1,6 +1,6 @@
 
 import React,{ useEffect, useState, useRef } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 // import DropDownProfile from "./DropDownProfile";
 import "./DropDownProfile.css"
@@ -20,7 +20,7 @@ const Navbar : React.FC<NavbarProps>= ({ user, setUser }) => {
     setOpen(false);
     Navigate("/");
   };
-  const toggleDropdown = (e: React.MouseEvent) => {
+  const toggleDropdown = () => {
     // e.stopPropagation();
     setOpen((prev) => !prev);
   }
