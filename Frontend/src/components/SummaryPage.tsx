@@ -1,16 +1,21 @@
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import { GoMute } from "react-icons/go";
+import { GoUnmute } from "react-icons/go";
 const SummaryPage = () => {
   const location = useLocation();
   const { summary } = location.state || {};
 
   const [displayText, setDisplayText] = useState("");
+  const [isMuted, setIsMuted] = useState(false);
+
+  
 
   if (!summary) return <h2>No summary found!</h2>;
 
   // Typing effect
   useEffect(() => {
+    if (!summary) return;
     let index = 0;
 
     const typing = setInterval(() => {
@@ -25,6 +30,7 @@ const SummaryPage = () => {
 
   // Bengali Text-to-Speech
   useEffect(() => {
+    if (!summary || isMuted) return;
     window.speechSynthesis.cancel(); // stop previous voice
 
     const utter = new SpeechSynthesisUtterance(summary);
@@ -32,10 +38,22 @@ const SummaryPage = () => {
     utter.rate = 0.9;          // slower for clarity
     utter.pitch = 1;
 
+    
     window.speechSynthesis.speak(utter);
 
     return () => window.speechSynthesis.cancel();
-  }, [summary]);
+  }, [summary, isMuted]);
+    // Toggle mute/unmute
+  const toggleMute = () => {
+    if (isMuted) {
+      // Unmute → replay speech
+      setIsMuted(false);
+    } else {
+      // Mute → stop speech
+      window.speechSynthesis.cancel();
+      setIsMuted(true);
+    }
+  };
 
   return (
     <div
@@ -50,23 +68,30 @@ const SummaryPage = () => {
       }}
     >
       <h2 style={{ textAlign: "center" }}>📘 সারাংশ</h2>
-      <p>{displayText}</p>
-
       <div style={{ marginTop: "20px", textAlign: "center" }}>
         <button
-          onClick={() => window.speechSynthesis.cancel()}
+          onClick={() => toggleMute()}
           style={{
-            padding: "10px 18px",
-            background: "crimson",
-            color: "white",
+            padding: "10px",
+            background: "transparent",
+            // background: isMuted ? "green" : "crimson",
+            color: "black",
             borderRadius: "6px",
             border: "none",
+            // border: "2px solid #e8a71a",
             cursor: "pointer",
+            position: "fixed",
+            right: "0px",
+            top:"50px",
           }}
         >
-          🔇 Stop Voice
+          {/* {isMuted ? "🔊 Unmute" : "🔇 Mute"} */}
+          {isMuted ? <GoUnmute /> : <GoMute />}
         </button>
       </div>
+      <p>{displayText}</p>
+
+      
     </div>
   );
 };
