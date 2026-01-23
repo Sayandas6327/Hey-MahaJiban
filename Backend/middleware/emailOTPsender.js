@@ -48,7 +48,6 @@ dotenv.config();
 const sendEmail = async (email, verificationCode) => {
   try{
     const response = await axios.post('https://mailserver.automationlounge.com/api/v1/messages/send',{
-      "from": "Hey Mahajiban <onboarding@resend.dev>",
       "to": email,
       "subject": "Verification Code",
       "text": `Your OTP is ${verificationCode}`
