@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+// import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home'
 import SignUpBrochure from './components/SignUpBrochure'
 import SignInBrochure from './components/SignInBrochure'
