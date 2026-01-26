@@ -86,7 +86,7 @@ const SummaryPage = () => {
           }}
         >
           {/* {isMuted ? "🔊 Unmute" : "🔇 Mute"} */}
-          {isMuted ? <GoUnmute /> : <GoMute />}
+          {isMuted ? <GoMute /> : <GoUnmute />}
         </button>
       </div>
       <p>{displayText}</p>
